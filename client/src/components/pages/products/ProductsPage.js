@@ -2,7 +2,8 @@ import React from 'react'
 import {Route, Switch} from 'react-router-dom'
 import ProductsList from './ProductsList'
 import * as AppPropTypes from '../../../lib/propTypes'
-import AddProduct from './AddProduct'
+import AddProductContainer from './AddProductContainer'
+import EditProductContainer from './EditProductContainer'
 
 const propTypes = {
   domainData: AppPropTypes.domainData
@@ -28,11 +29,16 @@ const ProductsPage = (props) =>
       <Route
         path='/products'
         exact
-        render={() => <ProductsList domainData={props.domainData} />}
+        render={() => <ProductsList domainData={props.domainData}
+        />}
       />
       <Route
         path='/products/add'
-        render={(innerProps) => <AddProduct domainData={props.domainData} history={innerProps.history} />}
+        render={() => <AddProductContainer domainData={props.domainData} />}
+      />
+      <Route
+        path='/products/edit/:productId'
+        render={() => <EditProductContainer domainData={props.domainData} />}
       />
     </Switch>
   </div>

@@ -12,17 +12,34 @@ class DomainDataProvider extends Component {
     this.getAllProducts()
   }
 
-  getAllProducts = () =>
+  getAllProducts = () => {
     ServerApi.getAllProducts(products =>
       this.setState({
         isLoaded: true,
         products
-      }))
+      })
+    )
+  }
+
+  addProduct = (newProduct) => {
+    ServerApi.addProduct(newProduct, this.getAllProducts)
+  }
+
+  deleteProduct = (product) => {
+    ServerApi.deleteProduct(product._id, this.getAllProducts)
+  }
+
+  updateProduct = (product) => {
+    ServerApi.updateProduct(product, this.getAllProducts)
+  }
 
   render () {
     const domainData = {
       isLoaded: this.state.isLoaded,
-      products: this.state.products
+      products: this.state.products,
+      addProduct: this.addProduct,
+      deleteProduct: this.deleteProduct,
+      updateProduct: this.updateProduct
     }
 
     return (

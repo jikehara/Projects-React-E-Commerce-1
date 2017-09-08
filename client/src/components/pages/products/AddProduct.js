@@ -1,19 +1,33 @@
 import React from 'react'
-import * as AppPropTypes from '../../../lib/propTypes'
+import PropTypes from 'prop-types'
 
 const propTypes = {
-  domainData: AppPropTypes.domainData
+  name: PropTypes.string.isRequired,
+  onNameChanged: PropTypes.func.isRequired,
+  category: PropTypes.string.isRequired,
+  onCategoryChanged: PropTypes.func.isRequired,
+  image: PropTypes.string.isRequired,
+  onImageChanged: PropTypes.func.isRequired,
+  price: PropTypes.number.isRequired,
+  onPriceChanged: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired
 }
 
 const AddProduct = (props) =>
   <div>
-    <form>
+    <form onSubmit={props.onSubmit}>
       <h1> This is the ADD products page </h1>
-      <input type='text' />Name
-      <input type='text' />Category
-      <input type='number' />Price
-      <input type='text' />Image
+      <input type='text' value={props.name} onChange={props.onNameChanged} />Name
+      <input type='text' value={props.category} onChange={props.onCategoryChanged} />Category
+      <input type='number' value={props.price} onChange={props.onPriceChanged} />Price
+      <input type='text' value={props.image} onChange={props.onImageChanged} />Image
+      <input
+        type='submit'
+        value='Submit'
+      />
     </form>
+    <button onClick={props.onCancel} >Cancel</button>
   </div>
 
 AddProduct.propTypes = propTypes
