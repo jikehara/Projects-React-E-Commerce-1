@@ -25,7 +25,6 @@ class AddProductContainer extends Component {
 
   onPriceChanged = (event) => {
     let myNum = parseFloat(event.target.value) || 0
-    console.log(myNum)
     if (typeof myNum !== 'number') {
       myNum = 0
     }

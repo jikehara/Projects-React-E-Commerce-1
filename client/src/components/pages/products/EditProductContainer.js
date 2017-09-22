@@ -42,10 +42,11 @@ class EditProductContainer extends Component {
   onSubmit = (event) => {
     event.preventDefault()
     this.props.domainData.updateProduct(this.state)
-    this.props.history.push('/products')
+      .then(() => this.props.history.push('/products'))
   }
 
   render () {
+    console.log(this.state)
     return <EditProductForm
       product={this.state}
       onNameChanged={this.onNameChanged}

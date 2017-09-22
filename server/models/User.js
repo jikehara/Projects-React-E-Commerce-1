@@ -1,11 +1,13 @@
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
-  name: {type: String, required: true},
-  password: {type: String, required: true},
-  address: {type: Object, required: true},
-  created: {type: Date, required: true},
-  modified: {type: Date, required: true},
+  local: {
+    firstName: String,
+    lastName: String,
+    email: String,
+    password: String,
+    isAdmin: Boolean
+  },
   cart: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
   orders: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
   reviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}]

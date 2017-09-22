@@ -14,9 +14,19 @@ const propTypes = {
   onCancel: PropTypes.func.isRequired
 }
 
+const styles = {
+  form: {
+    borderRadius: '0.5em',
+    border: '2px solid #3171d8',
+    display: 'flex',
+    flexFlow: 'column',
+    alignItems: 'center'
+  }
+}
+
 const AddProduct = (props) =>
   <div>
-    <form onSubmit={props.onSubmit}>
+    <form onSubmit={props.onSubmit} style={styles.form}>
       <h1> This is the ADD products page </h1>
       <input type='text' value={props.name} onChange={props.onNameChanged} />Name
       <input type='text' value={props.category} onChange={props.onCategoryChanged} />Category
